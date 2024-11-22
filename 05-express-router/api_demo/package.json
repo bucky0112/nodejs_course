@@ -1,5 +1,5 @@
 {
-  "name": "monster_hero_api",
+  "name": "api_demo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,7 +14,6 @@
     "nodemon": "^3.1.7"
   },
   "dependencies": {
-    "express": "^4.21.1",
-    "mysql2": "^3.11.4"
+    "express": "^4.21.1"
   }
 }

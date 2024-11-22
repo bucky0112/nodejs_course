@@ -23,6 +23,18 @@ DROP DATABASE test_1;
 
 ![](https://i.imgur.com/5IG048r.png)
 
+## 文字類型差異
+
+'ABC'
+
+- CHAR: CHAR(10) -> "ABC       "
+- VARCHAR: VARCHAR(10) -> "ABC"
+- TEXT -> "ABC"
+
+- CHAR: 255 (max)
+- VARCHAR: 6萬多
+- TEXT
+
 ```sql
 CREATE TABLE heroes (
   id INT NOT NULL AUTO_INCREMENT,

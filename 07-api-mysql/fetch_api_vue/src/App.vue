@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import axios from 'axios'
 import CardList from './components/CardList.vue'
 import EditModal from './components/EditModal.vue'
 import MessageAlert from './components/MessageAlert.vue'
@@ -17,10 +18,12 @@ const API_URL = 'http://localhost:3000'
 // API 使用
 const fetchHeroes = async () => {
   try {
-    const response = await fetch(`${API_URL}/heroes`)
-    if (!response.ok) throw new Error('Network response was not ok')
-    const data = await response.json()
-    heroes.value = data
+    // const response = await fetch(`${API_URL}/heroes`)
+    // if (!response.ok) throw new Error('Network response was not ok')
+    // const data = await response.json()
+    // heroes.value = data
+    const response = await axios.get(`${API_URL}/heroes`)
+    heroes.value = response.data
   } catch (err) {
     error.value = '獲取英雄資料失敗：' + err.message
   }
@@ -28,10 +31,12 @@ const fetchHeroes = async () => {
 
 const fetchMonsters = async () => {
   try {
-    const response = await fetch(`${API_URL}/monsters`)
-    if (!response.ok) throw new Error('Network response was not ok')
-    const data = await response.json()
-    monsters.value = data
+    // const response = await fetch(`${API_URL}/monsters`)
+    // if (!response.ok) throw new Error('Network response was not ok')
+    // const data = await response.json()
+    // monsters.value = data
+    const response = await axios.get(`${API_URL}/monsters`)
+    monsters.value = response.data
   } catch (err) {
     error.value = '獲取怪物資料失敗：' + err.message
   }
@@ -46,18 +51,22 @@ const handleEdit = (item, type) => {
 const handleSave = async () => {
   try {
     const endpoint = editingType.value === 'hero' ? 'heroes' : 'monsters'
-    const response = await fetch(`${API_URL}/${endpoint}/${editingItem.value.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(editingItem.value)
-    })
+    // const response = await fetch(`${API_URL}/${endpoint}/${editingItem.value.id}`, {
+    //   method: 'PUT',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(editingItem.value)
+    // })
+    const response = await axios.put(`${API_URL}/${endpoint}/${editingItem.value.id}`, editingItem.value)
 
-    if (!response.ok) throw new Error('Network response was not ok')
+    // if (!response.ok) throw new Error('Network response was not ok')
 
     message.value = `更新${editingType.value === 'hero' ? '英雄' : '怪物'}成功`
     editingItem.value = null
+
+    // fetchHeroes()
+    // fetchMonsters()
     await Promise.all([fetchHeroes(), fetchMonsters()])
   } catch (err) {
     error.value = '更新失敗：' + err.message
@@ -69,12 +78,12 @@ const handleDelete = async (id) => {
   if (!confirm('確定要刪除這位英雄嗎？')) return
 
   try {
-    const response = await fetch(`${API_URL}/heroes/${id}`, {
-      method: 'DELETE'
-    })
+    // const response = await fetch(`${API_URL}/heroes/${id}`, {
+    //   method: 'DELETE'
+    // })
+    // if (!response.ok) throw new Error('Network response was not ok')
 
-    if (!response.ok) throw new Error('Network response was not ok')
-
+    await axios.delete(`${API_URL}/heroes/${id}`)
     message.value = '英雄刪除成功'
     await fetchHeroes()
   } catch (err) {

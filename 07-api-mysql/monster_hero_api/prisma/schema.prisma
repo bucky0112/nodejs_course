@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model heroes {
+  id          Int        @id @default(autoincrement())
+  name        String     @db.VarChar(100)
+  gender      String?    @db.Char(1)
+  age         Int?
+  hero_level  String     @db.Char(1)
+  hero_rank   Int?
+  description String?    @db.Text
+  monsters    monsters[]
+}
+
+model monsters {
+  id           Int     @id @default(autoincrement())
+  name         String  @db.VarChar(100)
+  danger_level String  @db.Char(1)
+  description  String? @db.Text
+  kill_by      Int?
+  heroes       heroes? @relation(fields: [kill_by], references: [id], onUpdate: Restrict, map: "fk_killer_hero")
+
+  @@index([kill_by], map: "fk_killer_hero_idx")
+}

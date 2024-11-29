@@ -11,7 +11,7 @@ router.get(
 
 router.get(
   '/google/callback', // 第一個參數
-  passport.authenticate('google', { session: true }), // 第二個參數
+  passport.authenticate('google', { session: false }), // 第二個參數
   (req, res) => {
     // 第三個參數
     console.log('user', req.user)

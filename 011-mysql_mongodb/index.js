@@ -94,7 +94,35 @@ app.get('/books', async (req, res) => {
       }
     })
 
-    res.json({ data: books, status: 'success' })
+    const bookWithImages = await Promise.all(
+      books.map(async (book) => {
+        if (!book.mongodb_image_id) {
+          return {
+            ...book,
+            imageBase64: null
+          }
+        }
+
+        const image = await Image.findById(book.mongodb_image_id)
+
+        if (!image) {
+          return {
+            ...book,
+            imageBase64: null
+          }
+        }
+
+        const base64 = Buffer.from(image.image_data).toString('base64')
+        const imageBase64 = `data:${image.content_type};base64,${base64}`
+
+        return {
+          ...book,
+          imageBase64
+        }
+      })
+    )
+
+    res.json({ data: bookWithImages, status: 'success' })
   } catch (err) {
     res.status(500).json({ error: err.message })
   }

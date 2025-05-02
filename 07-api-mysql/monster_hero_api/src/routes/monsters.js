@@ -1,13 +1,15 @@
-const express = require('express')
+const express = require("express")
 const router = express.Router()
-// const db = require('../configs/db')
-const prisma = require('../configs/db')
+
+const db = require("../../db/index")
+const { heroesTable, monstersTable } = require("../../db/schema")
+
+const { eq } = require("drizzle-orm")
 
 // get all
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    // const [rows] = await db.query('SELECT * FROM monsters')
-    const rows = await prisma.monsters.findMany()
+    const rows = await db.select().from(monstersTable)
     res.json(rows)
   } catch (err) {
     res.status(500).json({ error: err.message })
@@ -15,24 +17,11 @@ router.get('/', async (req, res) => {
 })
 
 // get by id
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
-    // const [rows] = await db.query('SELECT * FROM monsters WHERE id = ?', [
-    //   req.params.id
-    // ])
+    const rows = await db.select().from(monstersTable).where(eq(monstersTable.id, req.params.id))
 
-    // if (rows.length === 0)
-    //   return res.status(404).json({ message: '找不到符合 ID' })
-
-    // res.json(rows[0])
-
-    const rows = await prisma.monsters.findUnique({
-      where: {
-        id: parseInt(req.params.id)
-      }
-    })
-
-    if (!rows) return res.status(404).json({ message: '找不到符合 ID' })
+    if (!rows) return res.status(404).json({ message: "找不到符合 ID" })
 
     res.json(rows)
   } catch (err) {
@@ -41,27 +30,20 @@ router.get('/:id', async (req, res) => {
 })
 
 // update
-router.put('/:id', async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const { name, danger_level, description, kill_by } = req.body
 
-    // await db.query(
-    //   'UPDATE monsters SET name = ?, danger_level = ?, description = ?, kill_by = ? WHERE id = ?',
-    //   [name, danger_level, description, kill_by, req.params.id]
-    // )
-
-    await prisma.monsters.update({
-      where: {
-        id: parseInt(req.params.id)
-      },
-      data: {
+    await db
+      .update(monstersTable)
+      .set({
         name,
         danger_level,
         description,
         kill_by
-      }
-    })
-    res.json({ message: '更新怪物成功' })
+      })
+      .where(eq(monstersTable.id, req.params.id))
+    res.json({ message: "更新怪物成功" })
   } catch (err) {
     res.status(500).json({ error: err.message })
   }

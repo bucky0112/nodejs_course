@@ -11,13 +11,17 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "drizzle-kit": "^0.31.0",
     "nodemon": "^3.1.7"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "drizzle-orm": "^0.43.1",
     "express": "^4.21.1",
     "mysql2": "^3.11.4",
+    "pg": "^8.15.6",
     "prisma": "^5.22.0"
   }
 }

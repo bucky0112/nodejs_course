@@ -1,14 +1,12 @@
-const express = require('express')
+const express = require("express")
 const router = express.Router()
-// const db = require('../configs/db')
-
-const prisma = require('../configs/db')
-
+const db = require("../../db/index")
+const { heroesTable, monstersTable } = require("../../db/schema")
+const { eq } = require("drizzle-orm")
 // get all
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    // const [rows] = await db.query('SELECT * FROM heroes')
-    const rows = await prisma.heroes.findMany()
+    const rows = await db.select().from(heroesTable)
     res.json(rows)
   } catch (err) {
     res.status(500).json({ error: err.message })
@@ -16,19 +14,11 @@ router.get('/', async (req, res) => {
 })
 
 // get by id
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
-    // const [rows] = await db.query('SELECT * FROM heroes WHERE id = ?', [
-    //   req.params.id
-    // ])
+    const rows = await db.select().from(heroesTable).where(eq(heroesTable.id, req.params.id))
 
-    const rows = await prisma.heroes.findUnique({
-      where: {
-        id: parseInt(req.params.id)
-      }
-    })
-
-    if (!rows) return res.status(404).json({ message: '找不到符合 ID' })
+    if (!rows) return res.status(404).json({ message: "找不到符合 ID" })
 
     res.json(rows)
   } catch (err) {
@@ -37,45 +27,32 @@ router.get('/:id', async (req, res) => {
 })
 
 // update
-router.put('/:id', async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const { name, gender, age, hero_level, hero_rank, description } = req.body
 
-    // await db.query(
-    //   'UPDATE heroes SET name = ?, gender = ?, age = ?, hero_level = ?, hero_rank = ?, description = ? WHERE id = ?',
-    //   [name, gender, age, hero_level, hero_rank, description, req.params.id]
-    // )
-
-    await prisma.heroes.update({
-      where: {
-        id: parseInt(req.params.id)
-      },
-      data: {
+    await db
+      .update(heroesTable)
+      .set({
         name,
         gender,
         age,
         hero_level,
         hero_rank,
         description
-      }
-    })
-    res.json({ message: '更新英雄成功' })
+      })
+      .where(eq(heroesTable.id, req.params.id))
+
+    res.json({ message: "更新英雄成功" })
   } catch (err) {
     res.status(500).json({ error: err.message })
   }
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
-    // const [result] = await db.query('DELETE FROM heroes WHERE id = ?', [
-    //   req.params.id
-    // ])
-    await prisma.heroes.delete({
-      where: {
-        id: parseInt(req.params.id)
-      }
-    })
-    res.json({ message: '成功刪除' })
+    await db.delete(heroesTable).where(eq(heroesTable.id, req.params.id))
+    res.json({ message: "成功刪除" })
   } catch (err) {
     res.status(500).json({ error: err.message })
   }

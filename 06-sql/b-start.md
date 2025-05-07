@@ -1,17 +1,7 @@
 ## 建立資料庫
 
 ```sql
-CREATE SCHEMA `test-schema` ;
-```
-
-```sql
-create database test_1;
-```
-
-## 使用資料庫
-
-```sql
-USE test_1;
+CREATE DATABASE test_1;
 ```
 
 ## 刪除資料庫
@@ -37,18 +27,19 @@ DROP DATABASE test_1;
 
 ```sql
 CREATE TABLE heroes (
-  id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(100) NOT NULL,
-  gender CHAR(1),
-  age INT,
-  hero_level CHAR(1) NOT NULL,
-  hero_rank INT,
-  description TEXT,
-  PRIMARY KEY (id)
-)
+    id SERIAL PRIMARY KEY,                -- Auto Increment, 流水編號
+    name VARCHAR(100) NOT NULL,          -- 姓名
+    gender CHAR(1),                      -- 性別
+    age INT,                             -- 年齡
+    hero_level CHAR(1) NOT NULL,         -- 級別，分 S、A、B、C
+    hero_rank INT,                       -- 排行
+    description TEXT                     -- 說明
+);
 ```
 
-請練習建立一個反派角色的表格：
+## SERIAL 跟 INT 不同的地方？
+
+## 請練習建立一個反派角色的表格：
 
 ![](https://i.imgur.com/gcP1Zur.png)
 

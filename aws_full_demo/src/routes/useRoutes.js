@@ -1,12 +1,8 @@
-const express = require('express')
+import express from 'express'
+import { deleteFile, uploadFile, getFiles, createUser } from '../controllers/useController.js'
+import { upload } from '../config/s3.js'
+
 const router = express.Router()
-const {
-  deleteFile,
-  uploadFile,
-  getFiles,
-  createUser
-} = require('../controllers/useController')
-const { upload } = require('../config/s3')
 
 // 上傳檔案
 router.post('/upload', upload.single('image'), uploadFile)
@@ -20,4 +16,4 @@ router.delete('/files/:key', deleteFile)
 // 新增 user
 router.post('/createuser', createUser)
 
-module.exports = router
+export default router

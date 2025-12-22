@@ -1,5 +1,5 @@
-const express = require('express')
-const useRouter = require('./src/routes/useRoutes')
+import express from 'express'
+import useRouter from './src/routes/useRoutes.js'
 
 const app = express()
 

@@ -1,6 +1,7 @@
-const express = require('express')
+import express from 'express'
+import Todos from '../models/Todos.js'
+
 const router = express.Router()
-const Todos = require('../models/Todos')
 
 router.get('/todos', async (req, res) => {
   try {
@@ -80,4 +81,4 @@ router.delete('/todos/:id', async (req, res) => {
   }
 })
 
-module.exports = router
+export default router

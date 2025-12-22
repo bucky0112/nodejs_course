@@ -1,8 +1,8 @@
-const express = require('express')
-require('dotenv').config()
-const connectDB = require('./config/db')
-const userRoutes = require('./routes/user')
-const todosRoutes = require('./routes/todos')
+import express from 'express'
+import 'dotenv/config'
+import connectDB from './config/db.js'
+import userRoutes from './routes/user.js'
+import todosRoutes from './routes/todos.js'
 
 connectDB()
 

@@ -1,6 +1,6 @@
-const db = require("../configs/db")
-const { eq } = require("drizzle-orm")
-const { postsTable } = require("../models/schema")
+import db from '../configs/db.js'
+import { eq } from 'drizzle-orm'
+import { postsTable } from '../models/schema.js'
 
 const createPost = async (req, res) => {
   const { userId, imageUrl, caption } = req.body
@@ -34,10 +34,4 @@ const deletePost = async (req, res) => {
   res.status(200).json(post)
 }
 
-module.exports = {
-  createPost,
-  getPostById,
-  getPostsByUserId,
-  updatePost,
-  deletePost
-}
+export { createPost, getPostById, getPostsByUserId, updatePost, deletePost }

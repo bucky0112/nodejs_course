@@ -1,9 +1,9 @@
-const bcrypt = require('bcrypt') // 加密密碼
-const db = require("../config/db")
-const { usersTable } = require("../models/schema")
-const { eq } = require('drizzle-orm')
-const jwt = require('jsonwebtoken')
-require('dotenv').config()
+import bcrypt from 'bcrypt'
+import db from '../config/db.js'
+import { usersTable } from '../models/schema.js'
+import { eq } from 'drizzle-orm'
+import jwt from 'jsonwebtoken'
+import 'dotenv/config'
 
 const SECRET_KEY = process.env.SECRET_KEY
 
@@ -64,8 +64,4 @@ const useGetProfile = (req, res) => {
   res.json({ user: req.user })
 }
 
-module.exports = {
-  useRegister,
-  useLogin,
-  useGetProfile
-}
+export { useRegister, useLogin, useGetProfile }

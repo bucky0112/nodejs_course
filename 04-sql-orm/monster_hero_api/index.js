@@ -1,8 +1,9 @@
-const express = require('express')
+import express from 'express'
+import cors from 'cors'
+import heroesRouter from './src/routes/heroes.js'
+import monstersRouter from './src/routes/monsters.js'
+
 const app = express()
-const cors = require('cors')
-const heroesRouter = require('./src/routes/heroes')
-const monstersRouter = require('./src/routes/monsters')
 
 app.use(cors())
 

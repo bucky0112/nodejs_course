@@ -1,6 +1,7 @@
-const express = require("express")
+import express from 'express'
+import { createLike, deleteLike, getLikes } from '../controllers/useLikes.js'
+
 const router = express.Router()
-const { createLike, deleteLike, getLikes } = require("../controllers/useLikes")
 
 // POST   /posts/:id/like       // 按讚
 // DELETE /posts/:id/unlike     // 取消讚
@@ -10,4 +11,4 @@ router.post("/:id/like", createLike)
 router.delete("/:id/unlike", deleteLike)
 router.get("/:id/likes", getLikes)
 
-module.exports = router
+export default router

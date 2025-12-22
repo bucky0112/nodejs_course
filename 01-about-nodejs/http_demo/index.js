@@ -1,4 +1,4 @@
-const http = require('http')
+import http from 'http'
 
 const todos = ['學習 Node.js', '學習 HTTP 模組', '完成作業']
 

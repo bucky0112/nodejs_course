@@ -1,6 +1,6 @@
-const { z } = require('zod')
-const jwt = require('jsonwebtoken')
-require('dotenv').config()
+import { z } from 'zod'
+import jwt from 'jsonwebtoken'
+import 'dotenv/config'
 
 const SECRET_KEY = process.env.SECRET_KEY
 
@@ -52,7 +52,4 @@ const authenticateToken = (req, res, next) => {
   })
 }
 
-module.exports = {
-  validateRegister,
-  authenticateToken
-}
+export { validateRegister, authenticateToken }

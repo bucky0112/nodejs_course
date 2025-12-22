@@ -1,13 +1,14 @@
-require('dotenv').config()
-const express = require('express')
+import 'dotenv/config'
+import express from 'express'
+import passport from 'passport'
+import cookieParser from 'cookie-parser'
+import { Strategy as GoogleStrategy } from 'passport-google-oauth20'
+import useRouters from './src/routes/useRouters.js'
+import morgan from 'morgan'
+import cors from 'cors'
+import connectDB from './src/configs/db.js'
+
 const app = express()
-const passport = require('passport')
-const cookieParser = require('cookie-parser')
-const GoogleStrategy = require('passport-google-oauth20').Strategy
-const useRouters = require('./src/routes/useRouters')
-const morgan = require('morgan')
-const cors = require('cors')
-const connectDB = require('./src/configs/db')
 
 connectDB()
 

@@ -1,4 +1,4 @@
-const { pgTable, serial, varchar, integer, timestamp, primaryKey } = require("drizzle-orm/pg-core")
+import { pgTable, serial, varchar, integer, timestamp, primaryKey } from 'drizzle-orm/pg-core'
 
 const usersTable = pgTable("users", {
   id: serial("id").primaryKey(),
@@ -60,10 +60,4 @@ const commentsTable = pgTable("comments", {
   createdAt: timestamp("created_at", { precision: 0 }).defaultNow()
 })
 
-module.exports = {
-  usersTable,
-  followsTable,
-  postsTable,
-  likesTable,
-  commentsTable
-}
+export { usersTable, followsTable, postsTable, likesTable, commentsTable }

@@ -1,6 +1,6 @@
-const { S3Client } = require('@aws-sdk/client-s3')
-require('dotenv').config()
-const multer = require('multer')
+import { S3Client } from '@aws-sdk/client-s3'
+import 'dotenv/config'
+import multer from 'multer'
 
 const BUCKET_NAME = process.env.S3_BUCKET_NAME
 const REGION = process.env.AWS_REGION
@@ -32,4 +32,4 @@ const upload = multer({
   }
 })
 
-module.exports = { upload, s3 }
+export { upload, s3 }

@@ -1,8 +1,9 @@
-const express = require("express")
+import express from 'express'
+import usersRouter from './src/routes/users.js'
+import postsRouter from './src/routes/posts.js'
+import likesRouter from './src/routes/likes.js'
+
 const app = express()
-const usersRouter = require("./src/routes/users")
-const postsRouter = require("./src/routes/posts")
-const likesRouter = require("./src/routes/likes")
 
 app.use(express.json())
 app.use("/users", usersRouter)

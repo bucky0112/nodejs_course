@@ -1,5 +1,5 @@
-const passport = require('passport')
-const User = require('../models/schema')
+import passport from 'passport'
+import User from '../models/schema.js'
 
 // 第一步：導向 Google 登入頁
 const googleAuth = (req, res) => {
@@ -38,7 +38,4 @@ const googleAuthCallback = async (req, res, next) => {
   })(req, res, next)
 }
 
-module.exports = {
-  googleAuth,
-  googleAuthCallback
-}
+export { googleAuth, googleAuthCallback }

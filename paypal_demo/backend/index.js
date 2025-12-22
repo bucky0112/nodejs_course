@@ -1,8 +1,9 @@
-const express = require('express')
+import express from 'express'
+import route from './src/routes/order.js'
+import bodyParser from 'body-parser'
+import cors from 'cors'
+
 const app = express()
-const route = require("./src/routes/order")
-const bodyParser = require('body-parser')
-const cors = require("cors")
 
 app.use(cors())
 app.use(bodyParser.json())

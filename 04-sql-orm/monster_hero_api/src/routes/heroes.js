@@ -1,8 +1,9 @@
-const express = require("express")
+import express from 'express'
+import db from '../../db/index.js'
+import { heroesTable, monstersTable } from '../../db/schema.js'
+import { eq } from 'drizzle-orm'
+
 const router = express.Router()
-const db = require("../../db/index")
-const { heroesTable, monstersTable } = require("../../db/schema")
-const { eq } = require("drizzle-orm")
 // get all
 router.get("/", async (req, res) => {
   try {
@@ -64,4 +65,4 @@ router.delete("/:id", async (req, res) => {
   }
 })
 
-module.exports = router
+export default router

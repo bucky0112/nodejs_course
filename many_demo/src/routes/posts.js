@@ -1,6 +1,7 @@
-const express = require("express")
+import express from 'express'
+import { createPost, getPostById, getPostsByUserId, updatePost, deletePost } from '../controllers/usePosts.js'
+
 const router = express.Router()
-const { createPost, getPostById, getPostsByUserId, updatePost, deletePost } = require("../controllers/usePosts")
 
 // POST   /posts                // 發佈貼文
 // GET    /posts/:id            // 查詢單篇貼文
@@ -14,4 +15,4 @@ router.get("/users/:id/posts", getPostsByUserId)
 router.put("/:id", updatePost)
 router.delete("/:id", deletePost)
 
-module.exports = router
+export default router

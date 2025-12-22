@@ -1,8 +1,5 @@
-const {
-  OrdersController,
-  CheckoutPaymentIntent
-} = require('@paypal/paypal-server-sdk')
-const client = require('../configs/paypal')
+import { OrdersController, CheckoutPaymentIntent } from '@paypal/paypal-server-sdk'
+import client from '../configs/paypal.js'
 
 const ordersController = new OrdersController(client) // 初始化訂單控制
 
@@ -79,7 +76,4 @@ const capturePaypalOrder = async (req, res) => {
   }
 }
 
-module.exports = {
-  payNewOrder,
-  capturePaypalOrder
-}
+export { payNewOrder, capturePaypalOrder }

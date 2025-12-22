@@ -1,6 +1,6 @@
-const db = require("../configs/db")
-const { eq, count } = require("drizzle-orm")
-const { likesTable } = require("../models/schema")
+import db from '../configs/db.js'
+import { eq, count } from 'drizzle-orm'
+import { likesTable } from '../models/schema.js'
 
 const createLike = async (req, res) => {
   const { id } = req.params
@@ -25,8 +25,4 @@ const getLikes = async (req, res) => {
   res.status(200).json(likes)
 }
 
-module.exports = {
-  createLike,
-  deleteLike,
-  getLikes
-}
+export { createLike, deleteLike, getLikes }

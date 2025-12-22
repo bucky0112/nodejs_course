@@ -1,6 +1,6 @@
-const db = require("../configs/db")
-const { eq } = require("drizzle-orm")
-const { usersTable } = require("../models/schema")
+import db from '../configs/db.js'
+import { eq } from 'drizzle-orm'
+import { usersTable } from '../models/schema.js'
 
 const getUsers = async (req, res) => {
   const users = await db.select().from(usersTable)
@@ -32,10 +32,4 @@ const deleteUser = async (req, res) => {
   res.status(200).json(user)
 }
 
-module.exports = {
-  getUsers,
-  getUserById,
-  createUser,
-  updateUser,
-  deleteUser
-}
+export { getUsers, getUserById, createUser, updateUser, deleteUser }

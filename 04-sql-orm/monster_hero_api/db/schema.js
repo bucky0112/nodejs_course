@@ -1,4 +1,4 @@
-const { pgTable, serial, varchar, char, integer, text, foreignKey } = require("drizzle-orm/pg-core")
+import { pgTable, serial, varchar, char, integer, text, foreignKey } from 'drizzle-orm/pg-core'
 
 // 英雄表
 const heroesTable = pgTable("heroes", {
@@ -40,7 +40,4 @@ const monstersTable = pgTable(
   killBy: integer("kill_by").references(() => heroesTable.id),
 }); */
 
-module.exports = {
-  heroesTable,
-  monstersTable
-}
+export { heroesTable, monstersTable }

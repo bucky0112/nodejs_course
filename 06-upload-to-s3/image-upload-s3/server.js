@@ -1,11 +1,9 @@
-const express = require("express")
-const multer = require("multer")
-const dotenv = require("dotenv")
-const { S3Client, PutObjectCommand, GetObjectCommand } = require("@aws-sdk/client-s3")
-const fs = require("node:fs")
-const { getSignedUrl } = require("@aws-sdk/s3-request-presigner")
-
-dotenv.config()
+import express from 'express'
+import multer from 'multer'
+import 'dotenv/config'
+import { S3Client, PutObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3'
+import fs from 'node:fs'
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
 
 const app = express()
 const port = 3000

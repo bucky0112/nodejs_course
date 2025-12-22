@@ -1,6 +1,7 @@
 {
   "name": "express_demo",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon app.js",

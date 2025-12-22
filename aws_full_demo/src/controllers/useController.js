@@ -1,5 +1,5 @@
-require('dotenv').config()
-const {
+import 'dotenv/config'
+import {
   S3Client,
   PutObjectCommand,
   CreateBucketCommand,
@@ -8,13 +8,13 @@ const {
   paginateListObjectsV2,
   GetObjectCommand,
   ListObjectsV2Command
-} = require('@aws-sdk/client-s3')
-const { upload, s3 } = require('../config/s3')
-const fs = require('fs')
-const { getSignedUrl } = require('@aws-sdk/s3-request-presigner')
-const db = require('../config/db')
-const { usersTable } = require('../models/schema')
-const { eq } = require('drizzle-orm')
+} from '@aws-sdk/client-s3'
+import { upload, s3 } from '../config/s3.js'
+import fs from 'fs'
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
+import db from '../config/db.js'
+import { usersTable } from '../models/schema.js'
+import { eq } from 'drizzle-orm'
 
 const BUCKET_NAME = process.env.S3_BUCKET_NAME
 const REGION = process.env.AWS_REGION
@@ -138,9 +138,4 @@ const createUser = async (req, res) => {
   }
 }
 
-module.exports = {
-  deleteFile,
-  uploadFile,
-  getFiles,
-  createUser
-}
+export { deleteFile, uploadFile, getFiles, createUser }

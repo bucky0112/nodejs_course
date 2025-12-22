@@ -1,7 +1,8 @@
-const express = require('express')
+import express from 'express'
+import { useRegister, useLogin, useGetProfile } from '../controller/useAuth.js'
+import { validateRegister, authenticateToken } from '../middleware/validateRegister.js'
+
 const router = express.Router()
-const { useRegister, useLogin, useGetProfile } = require('../controller/useAuth')
-const { validateRegister, authenticateToken } = require('../middleware/validateRegister')
 
 // 註冊
 router.post('/register', validateRegister, useRegister)
@@ -12,4 +13,4 @@ router.post('/login', useLogin)
 // 取得個人資料
 router.get('/profile', authenticateToken, useGetProfile)
 
-module.exports = router
+export default router

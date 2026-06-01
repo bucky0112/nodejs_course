@@ -46,3 +46,30 @@ docker compose -f docker-compose.sandbox.yml run --rm sandbox
 4. **npm scripts** - `postinstall` 在安裝時執行
 
 使用 Docker 沙盒，即使這些惡意程式碼被執行，也無法存取你的主機系統。
+
+## 關於 `malicious-demo/`（本地測試目標）
+
+本目錄下的 `malicious-demo/` 是一個**刻意製作的惡意專案範例**，用來示範
+上述各種攻擊向量，並驗證 `safe-clone.sh` / `test-local.sh` 的偵測效果。
+
+它**不會被納入課程 repo**（已在根目錄 `.gitignore` 排除），原因有二：
+
+1. 內含偽裝的惡意腳本（`.hidden-malware.sh`）與惡意 git hooks
+   （`.git/hooks/post-checkout`、`post-merge`），不適合隨課程散布。
+2. 它本身帶有獨立的巢狀 `.git`，正是要讓學生用工具偵測「clone 時自動
+   執行的 git hooks」這個攻擊向量。
+
+### 講師如何準備這個測試目標
+
+在 `security-sandbox/` 下建立 `malicious-demo/`，放入以下檔案各自示範一種
+攻擊向量，再 `git init` 並在 `.git/hooks/` 放入會輸出訊息的 hook 即可：
+
+| 攻擊向量 | 檔案 |
+|---------|------|
+| npm scripts | `package.json` 的 `preinstall` / `postinstall` |
+| VSCode 自動執行 | `.vscode/tasks.json`（`runOn: folderOpen`） |
+| VSCode terminal | `.vscode/settings.json`（`shellArgs`） |
+| Git hooks | `.git/hooks/post-checkout`、`post-merge` |
+| 隱藏可執行檔 | `.hidden-malware.sh` |
+
+> ⚠️ hook 與腳本內容請只用 `echo` 示範，**不要寫入任何真正具破壞性的命令**。

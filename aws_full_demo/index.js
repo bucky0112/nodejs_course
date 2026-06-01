@@ -7,8 +7,8 @@ app.use(express.json())
 
 app.use('/user', useRouter)
 
-app.listen(3000, () => {
-  console.log('已運作在 http://localhost:3000')
+app.listen(3100, () => {
+  console.log('已運作在 http://localhost:3100')
 })
 
 

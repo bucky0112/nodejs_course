@@ -1,5 +1,5 @@
 {
-  "name": "010-temp_folder",
+  "name": "relations-demo",
   "version": "1.0.0",
   "type": "module",
   "main": "index.js",
@@ -12,7 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "資料表關聯（1:N、M:N）教學範例：users / posts / likes",
   "dependencies": {
     "dotenv": "^16.5.0",
     "drizzle-kit": "^0.31.1",

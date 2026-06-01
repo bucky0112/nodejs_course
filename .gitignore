@@ -1,2 +1,15 @@
-/node_modules
+# 依賴（任意層級的 node_modules 都忽略）
+node_modules/
+
+# 環境變數（任意層級）
 .env
+.env.local
+
+# 日誌
+*.log
+
+# 作業系統
+.DS_Store
+
+# 上傳暫存（本地測試產物）
+uploads/

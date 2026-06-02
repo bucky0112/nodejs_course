@@ -6,34 +6,22 @@ const router = useRouter();
 const route = useRoute();
 const user = ref(null);
 
-onMounted(async () => {
-  // 檢查 URL 參數中是不是有包含使用者資料（來自 Google OAuth redirect）
+onMounted(() => {
+  // 使用者資料來自 Google OAuth callback 的 redirect URL query（無狀態設計）
   if (route.query.user) {
     try {
       user.value = JSON.parse(decodeURIComponent(route.query.user));
-
-      console.log(user.value)
-      // 清除 URL
+      // 解析後把 query 從網址清掉，避免使用者資料留在網址列
       router.replace({ path: '/home', query: {} });
     } catch (error) {
       console.error('解析使用者資料失敗:', error);
       router.push('/login');
     }
   } else {
-    // 如果 URL 中沒有使用者資料，嘗試從後端取得
-    try {
-      const response = await fetch('http://localhost:3000/auth/user', {
-        credentials: 'include' // 包含憑證
-      });
-      if (response.ok) {
-        user.value = await response.json();
-      } else {
-        router.push('/login');
-      }
-    } catch (error) {
-      console.error('拿不到使用者資料:', error);
-      router.push('/login');
-    }
+    // 沒有帶 user query（例如直接造訪 /home 或重新整理後）就回登入頁。
+    // 註：本範例不持久化登入狀態；若要支援重新整理後仍保持登入，
+    //     需改用 session/cookie 或 JWT，並在後端提供對應的使用者查詢端點。
+    router.push('/login');
   }
 });
 </script>

@@ -119,11 +119,18 @@ cp .env.template .env
 CREATE DATABASE notes_app;
 ```
 
-### 5. 執行 Migration
+### 5. 產生並執行 Migration
+
+先依 schema 產生 migration 檔，再套用到資料庫：
 
 ```bash
-npm run migrate
+npm run generate   # 依 schema 產生 SQL migration 檔到 drizzle/
+npm run migrate    # 套用 migration，實際建立資料表
 ```
+
+> 若略過 `generate`，`drizzle/` 內沒有 migration 檔，`migrate` 不會建表，
+> 第一次打 API 就會得到 `relation "users" does not exist`。
+> 也可改用 `npm run push` 直接把 schema 同步到資料庫（開發階段較方便）。
 
 ### 6. 啟動開發伺服器
 

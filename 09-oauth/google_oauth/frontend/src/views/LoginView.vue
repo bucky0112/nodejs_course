@@ -1,29 +1,10 @@
 <script setup>
-import { onMounted } from 'vue';
-import { useRouter } from 'vue-router';
-
-const router = useRouter();
-
+// 本範例採「無狀態 redirect」設計：後端 callback 直接把使用者資料
+// 帶在 redirect 的 URL query 傳給前端（見 HomeView），不使用 session/cookie，
+// 因此這裡不需要、也沒有 /auth/check 這種登入狀態檢查端點。
 const handleGoogleLogin = () => {
   window.location.href = 'http://localhost:3000/auth/google';
 };
-
-onMounted(() => {
-  // 檢查是否已登入
-  const checkAuth = async () => {
-    try {
-      const response = await fetch('http://localhost:3000/auth/check', {
-        credentials: 'include' // 包含憑證
-      });
-      if (response.ok) {
-        router.push('/home');
-      }
-    } catch (error) {
-      console.error('Auth check failed:', error);
-    }
-  };
-  checkAuth();
-});
 </script>
 
 <template>

@@ -12,7 +12,7 @@ import express from "express";
 import "dotenv/config";
 import { Client, Environment, OrdersController, CheckoutPaymentIntent } from "@paypal/paypal-server-sdk";
 import bodyParser from "body-parser";
-const cors = require("cors");
+import cors from "cors";
 
 const app = express();
 app.use(bodyParser.json());
@@ -51,7 +51,7 @@ app.post("/api/orders/:orderID/capture", async (req, res) => {
   res.json(JSON.parse(body));
 });
 
-app.listen(8080, () => console.log("Server running on http://localhost:8080"));
+app.listen(3000, () => console.log("Server running on http://localhost:3000"));
 ```
 
 ## 3. 測試 API 可使用 Postman 或前端呼叫

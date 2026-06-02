@@ -1,7 +1,7 @@
 # 怎麼從 S3 刪除檔案？
 
 ```js
-const { DeleteObjectCommand } = require("@aws-sdk/client-s3")
+import { DeleteObjectCommand } from '@aws-sdk/client-s3'
 
 app.delete("/files/:key", async (req, res) => {
   const { key } = req.params

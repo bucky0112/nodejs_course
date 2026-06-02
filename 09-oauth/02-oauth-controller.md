@@ -3,7 +3,7 @@
 這段處理 Google 登入的主要流程：
 
 ```js
-const passport = require("passport")
+import passport from "passport"
 
 // 第一步：導向 Google 登入頁
 const googleAuth = (req, res) => {
@@ -22,7 +22,7 @@ const googleAuthCallback = (req, res, next) => {
   })(req, res, next)
 }
 
-module.exports = {
+export {
   googleAuth,
   googleAuthCallback
 }

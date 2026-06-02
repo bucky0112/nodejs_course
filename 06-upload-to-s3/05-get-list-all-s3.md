@@ -1,7 +1,7 @@
 # 如何從 S3 拿到全部的檔案列表？
 
 ```js
-const { ListObjectsV2Command } = require("@aws-sdk/client-s3")
+import { ListObjectsV2Command } from '@aws-sdk/client-s3'
 
 app.get("/files", async (req, res) => {
   try {

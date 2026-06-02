@@ -1,7 +1,7 @@
 # path 處理檔案路徑
 
 ```
-const path = require('path');
+import path from 'node:path';
 
 // 組合路徑
 const fullPath = path.join(__dirname, 'files', 'test.txt');

@@ -1,7 +1,7 @@
 # http 模組
 
 ```
-const http = require('http');
+import http from 'node:http';
 
 // 創建基本的 HTTP 伺服器
 const server = http.createServer((req, res) => {

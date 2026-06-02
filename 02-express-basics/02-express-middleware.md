@@ -25,7 +25,7 @@ app.use(firstMiddleware)
 ### 內建 Middleware
 
 ```javascript
-const express = require('express');
+import express from 'express';
 const app = express();
 
 // 解析 JSON 格式
@@ -38,7 +38,7 @@ app.use(express.json());
 // 安裝 cors
 // npm install cors
 
-const cors = require('cors');
+import cors from 'cors';
 
 // 啟用所有來源的 CORS
 app.use(cors());

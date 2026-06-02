@@ -5,7 +5,7 @@ Express.js 提供了簡單且強大的路由系統，支援各種 HTTP 方法。
 ## 基本路由設定
 
 ```javascript
-const express = require('express');
+import express from 'express';
 const app = express();
 const port = 3000;
 

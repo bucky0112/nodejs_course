@@ -1,7 +1,7 @@
 # url 模組
 
 ```
-const url = require('url');
+import url from 'node:url';
 
 // 解析 URL
 const myUrl = new URL('https://example.com/path?name=test&age=25');

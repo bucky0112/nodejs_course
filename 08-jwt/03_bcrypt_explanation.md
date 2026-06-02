@@ -29,7 +29,7 @@ npm install bcrypt
 ### 密碼雜湊
 
 ```javascript
-const bcrypt = require('bcrypt');
+import bcrypt from 'bcrypt';
 
 // 雜湊密碼
 async function hashPassword(password) {
@@ -42,7 +42,7 @@ async function hashPassword(password) {
 ### 密碼驗證
 
 ```javascript
-const bcrypt = require('bcrypt');
+import bcrypt from 'bcrypt';
 
 // 驗證密碼
 async function verifyPassword(password, hashedPassword) {
@@ -54,8 +54,8 @@ async function verifyPassword(password, hashedPassword) {
 ## 實際應用範例
 
 ```javascript
-const express = require('express');
-const bcrypt = require('bcrypt');
+import express from 'express';
+import bcrypt from 'bcrypt';
 const router = express.Router();
 
 // 註冊路由

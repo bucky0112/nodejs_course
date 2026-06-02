@@ -29,7 +29,7 @@ readFileMock('example.txt', (err, data) => {
 ### 1.2 實作範例（fs.readFile）
 
 ```
-const fs = require('fs');
+import fs from 'node:fs';
 
 fs.readFile('example.txt', 'utf8', (err, data) => {
   if (err) {
@@ -74,7 +74,7 @@ console.log('測試 Promise')
 ### 2.2 實作範例（fs.promises）
 
 ```
-const fs = require('fs').promises;
+import fs from 'node:fs/promises';
 
 async function demo() {
   try {
@@ -94,7 +94,7 @@ console.log('測試 async/await')
 ### 2.3 同步範例（fs.readFileSync）
 
 ```
-const fsSync = require('fs');
+import fsSync from 'node:fs';
 
 try {
   const data = fsSync.readFileSync('example.txt', 'utf8');
@@ -120,7 +120,7 @@ async/await 是建立在 Promise 之上的語法糖，讓非同步代碼看起�
 ### 基本語法
 
 ```javascript
-const fs = require('fs').promises;
+import fs from 'node:fs/promises';
 
 async function readFiles() {
   try {

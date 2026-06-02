@@ -9,7 +9,7 @@
 Node.js 內建的 `crypto` 模組提供了產生安全隨機字串的方法：
 
 ```javascript
-const crypto = require('crypto');
+import crypto from 'node:crypto';
 
 // 產生 64 位元組的隨機字串
 const secretKey = crypto.randomBytes(64).toString('hex');
@@ -25,7 +25,7 @@ console.log(secretKey);
 SECRET_KEY=your_generated_secret_key
 
 // 在程式碼中使用
-require('dotenv').config();
+import 'dotenv/config';
 const secretKey = process.env.SECRET_KEY;
 ```
 
@@ -50,7 +50,7 @@ const secretKey = process.env.SECRET_KEY;
 ## 在 JWT 中使用密鑰
 
 ```javascript
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
 // 使用密鑰簽署 JWT
 const token = jwt.sign(

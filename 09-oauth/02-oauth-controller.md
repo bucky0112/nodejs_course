@@ -28,6 +28,11 @@ export {
 }
 ```
 
+> 這裡是**簡化版**：直接把 Google 回傳的 profile 傳給前端。完整的 demo
+> 會在 callback 內用 Drizzle 的 `insert(...).onConflictDoUpdate(...)`（upsert）
+> 把使用者寫入/更新到資料庫，再把資料庫的 user 傳給前端——詳見
+> `google_oauth/backend/src/controllers/useController.js`。
+
 ## 補充說明-A
 
 以下的這一段：

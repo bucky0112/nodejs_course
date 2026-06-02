@@ -1,10 +1,8 @@
 import 'dotenv/config'
 import express from 'express'
 import passport from 'passport'
-import cookieParser from 'cookie-parser'
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20'
 import useRouters from './src/routes/useRouters.js'
-import morgan from 'morgan'
 import cors from 'cors'
 // Drizzle: 匯入 db 即自動建立連線池
 import './src/configs/db.js'
@@ -17,7 +15,9 @@ const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET
 passport.use(new GoogleStrategy({
   clientID: GOOGLE_CLIENT_ID,
   clientSecret: GOOGLE_CLIENT_SECRET,
-  callbackURL: '/auth/google/callback'
+  // 用完整絕對網址，且必須與 Google Cloud Console 設定的「已授權重新導向 URI」完全一致；
+  // 相對路徑在反向代理或非預期 host 下容易對不上而失敗
+  callbackURL: process.env.GOOGLE_CALLBACK_URL || 'http://localhost:3000/auth/google/callback'
 }, (accessToken, refreshToken, profile, done) => {
   done(null, profile)
 }))

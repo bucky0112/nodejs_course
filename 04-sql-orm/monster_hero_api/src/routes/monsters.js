@@ -20,9 +20,10 @@ router.get("/:id", async (req, res) => {
   try {
     const rows = await db.select().from(monstersTable).where(eq(monstersTable.id, req.params.id))
 
-    if (!rows) return res.status(404).json({ message: "找不到符合 ID" })
+    // Drizzle 的 select 一律回傳陣列，查無資料是空陣列 []（truthy），用 length 判斷
+    if (rows.length === 0) return res.status(404).json({ message: "找不到符合 ID" })
 
-    res.json(rows)
+    res.json(rows[0])
   } catch (err) {
     res.status(500).json({ error: err.message })
   }

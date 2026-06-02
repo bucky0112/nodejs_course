@@ -5,7 +5,7 @@ const port = 3000;
 
 app.use(express.json());
 
-const todos = [];
+let todos = [];
 
 app.get('/todos', (req, res) => {
   res.json(todos)
@@ -34,6 +34,10 @@ app.put('/todos/:id', (req, res) => {
   const { completed } = req.body
 
   const todo = todos.find((t) => t.id === Number(id))
+
+  if (!todo) {
+    return res.status(404).json({ error: '找不到該待辦事項' })
+  }
 
   todo.completed = completed
   res.json(todo)

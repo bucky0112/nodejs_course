@@ -22,8 +22,10 @@ const useRegister = async (req, res) => {
 
     res.status(201).json({ message: '註冊成功' })
   } catch (err) {
-    console.log("error")
-    if (err.code === 'P2002') {
+    console.error(err)
+    // PostgreSQL 唯一鍵違反的錯誤碼是 '23505'（node-postgres / Drizzle）。
+    // 注意這不是 Prisma 的 'P2002'——用錯就永遠走不到這個 409 分支。
+    if (err.code === '23505') {
       return res.status(409).json({ message: '使用者已存在' })
     }
 

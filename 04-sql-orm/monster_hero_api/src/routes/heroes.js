@@ -21,9 +21,11 @@ router.get("/:id", async (req, res) => {
                                                               // (指定哪一個 table 欄位), (動態 id) 
     const rows = await db.select().from(heroesTable).where(eq(heroesTable.id, req.params.id))
     // SELECT * FROM heroes WHERE id = 動態 id
-    if (!rows) return res.status(404).json({ message: "找不到符合 ID" })
+    // 注意：Drizzle 的 select 一律回傳「陣列」，查無資料是空陣列 []（truthy），
+    // 所以要用 length 判斷，不能寫 if (!rows)
+    if (rows.length === 0) return res.status(404).json({ message: "找不到符合 ID" })
 
-    res.json(rows)
+    res.json(rows[0])
   } catch (err) {
     res.status(500).json({ error: err.message })
   }
@@ -58,7 +60,7 @@ router.delete("/:id", async (req, res) => {
   try {
     await db.delete(heroesTable).where(eq(heroesTable.id, req.params.id))
     // DELETE FROM heroes
-    // WHERE hero_level = 'A';
+    // WHERE id = 動態 id;
     res.json({ message: "成功刪除" })
   } catch (err) {
     res.status(500).json({ error: err.message })

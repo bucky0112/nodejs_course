@@ -20,16 +20,12 @@ const createOrder = async (cart) => {
     prefer: 'return=minimal' // 回應最少必要資訊
   }
 
-  try {
-    const { body, ...httpResponse } = await ordersController.createOrder(
-      collect
-    ) // 建立訂單
-    return {
-      jsonResponse: JSON.parse(body),
-      httpStatusCode: httpResponse.statusCode
-    }
-  } catch (err) {
-    console.error(err.message)
+  // 不在這裡 try/catch 吞掉錯誤；讓錯誤往上拋給 controller 統一處理，
+  // 否則回傳 undefined 會讓外層解構 { jsonResponse } 直接崩潰
+  const { body, ...httpResponse } = await ordersController.createOrder(collect) // 建立訂單
+  return {
+    jsonResponse: JSON.parse(body),
+    httpStatusCode: httpResponse.statusCode
   }
 }
 
@@ -39,17 +35,11 @@ const captureOrder = async (orderID) => {
     prefer: 'return=minimal' // 回應最少必要資訊
   }
 
-  try {
-    const { body, ...httpResponse } = await ordersController.captureOrder(
-      collect
-    )
-
-    return {
-      jsonResponse: JSON.parse(body),
-      httpStatusCode: httpResponse.statusCode
-    }
-  } catch (err) {
-    console.error(err.message)
+  // 同樣不在此吞掉錯誤，讓 controller 的 try/catch 統一處理
+  const { body, ...httpResponse } = await ordersController.captureOrder(collect)
+  return {
+    jsonResponse: JSON.parse(body),
+    httpStatusCode: httpResponse.statusCode
   }
 }
 

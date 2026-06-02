@@ -78,7 +78,8 @@ const uploadFile = async (req, res) => {
       .from(usersTable)
       .where(eq(usersTable.username, req.body.username))
 
-    if (!user) {
+    // Drizzle select 回傳陣列，查無使用者是空陣列 []（truthy），需用 length 判斷
+    if (user.length === 0) {
       return res.status(404).json({ message: '找不到使用者' })
     }
 

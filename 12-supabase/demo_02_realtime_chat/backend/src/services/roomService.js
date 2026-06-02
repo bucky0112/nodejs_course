@@ -16,7 +16,7 @@ export const roomService = {
       .from('rooms')
       .select('*')
       .eq('id', id)
-      .single()
+      .maybeSingle() // 查無資料回 null，讓 controller 能回 404（.single() 會丟 PGRST116 走 500）
 
     if (error) throw error
     return data
@@ -39,7 +39,7 @@ export const roomService = {
       .delete()
       .eq('id', id)
       .select()
-      .single()
+      .maybeSingle() // 查無資料回 null，讓 controller 能回 404
 
     if (error) throw error
     return data

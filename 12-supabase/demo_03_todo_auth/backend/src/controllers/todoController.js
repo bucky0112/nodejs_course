@@ -3,7 +3,7 @@ import { todoService } from '../services/todoService.js'
 export const todoController = {
   async getAll(req, res, next) {
     try {
-      const todos = await todoService.findByUserId(req.user.id)
+      const todos = await todoService.findByUserId(req.accessToken, req.user.id)
       res.json({ success: true, data: todos })
     } catch (error) {
       next(error)
@@ -12,7 +12,7 @@ export const todoController = {
 
   async getById(req, res, next) {
     try {
-      const todo = await todoService.findById(Number(req.params.id), req.user.id)
+      const todo = await todoService.findById(req.accessToken, Number(req.params.id), req.user.id)
       if (!todo) {
         return res.status(404).json({ success: false, error: 'Todo not found' })
       }
@@ -30,7 +30,7 @@ export const todoController = {
         return res.status(400).json({ success: false, error: 'Title is required' })
       }
 
-      const todo = await todoService.create({
+      const todo = await todoService.create(req.accessToken, {
         title,
         user_id: req.user.id,
         completed: false
@@ -51,6 +51,7 @@ export const todoController = {
       if (completed !== undefined) updateData.completed = completed
 
       const todo = await todoService.update(
+        req.accessToken,
         Number(req.params.id),
         req.user.id,
         updateData
@@ -68,7 +69,7 @@ export const todoController = {
 
   async delete(req, res, next) {
     try {
-      const todo = await todoService.delete(Number(req.params.id), req.user.id)
+      const todo = await todoService.delete(req.accessToken, Number(req.params.id), req.user.id)
 
       if (!todo) {
         return res.status(404).json({ success: false, error: 'Todo not found' })

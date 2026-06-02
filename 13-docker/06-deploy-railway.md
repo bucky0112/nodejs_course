@@ -220,7 +220,7 @@ Deploy successful!
 
 ```bash
 # 測試你的 API
-curl https://your-app.up.railway.app/api/health
+curl https://your-app.up.railway.app/health
 
 # 測試其他 endpoints
 curl https://your-app.up.railway.app/api/notes

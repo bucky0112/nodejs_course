@@ -114,7 +114,7 @@ WORKDIR /app
 
 # 安裝依賴
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 
 # 複製程式碼
 COPY . .
@@ -209,8 +209,8 @@ services:
       - POSTGRES_PASSWORD=secret123
       - POSTGRES_DB=notes_app
     ports:
-      # 開發時暴露資料庫連接埠
-      - "5432:5432"
+      # 開發時暴露資料庫連接埠：主機用 5433，避免與本機已安裝的 PostgreSQL(5432) 衝突
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:

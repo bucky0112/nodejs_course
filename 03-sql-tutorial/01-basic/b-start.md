@@ -22,8 +22,8 @@ DROP DATABASE test_1;
 - TEXT -> "ABC"
 
 - CHAR: 255 (max)
-- VARCHAR: 6萬多
-- TEXT
+- VARCHAR: 上限依資料庫而異（本課程用 PostgreSQL，VARCHAR(n) 的 n 最大可達約 10 億字元；MySQL 則為單列約 6 萬多）
+- TEXT: 不限長度
 
 ```sql
 CREATE TABLE heroes (
@@ -91,7 +91,7 @@ ALTER TABLE monsters
 ADD CONSTRAINT fk_kill_by
 FOREIGN KEY (kill_by)
 REFERENCES heroes(id)
-ON DELETE SET NULL; // --> 加上這行
+ON DELETE SET NULL; -- 加上這行
 ```
 
 ## 常見的 Constraint 種類：

@@ -188,7 +188,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # 安裝依賴（只安裝 production 依賴）
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 
 # 複製其餘程式碼
 COPY . .
@@ -239,7 +239,7 @@ WORKDIR /app
 
 # ✅ 好的做法：先複製 package 檔案
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 
 # 最後才複製程式碼（這層最常變動）
 COPY . .
@@ -255,7 +255,7 @@ CMD ["node", "index.js"]
 
 ```dockerfile
 # ✅ 推薦：使用 npm ci
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 
 # ❌ 避免：使用 npm install
 RUN npm install
@@ -283,7 +283,7 @@ RUN npm run build
 FROM node:20-slim
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 COPY --from=builder /app/dist ./dist
 CMD ["node", "dist/index.js"]
 ```
@@ -305,7 +305,7 @@ USER node
 
 WORKDIR /home/node/app
 COPY --chown=node:node . .
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 
 CMD ["node", "index.js"]
 ```

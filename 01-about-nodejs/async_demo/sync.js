@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'node:fs';
 
 console.log('--- 同步開始 ---');
 console.time('同步總耗時');

@@ -1,4 +1,4 @@
-const fs = require('fs').promises;
+import fs from 'node:fs/promises';
 
 async function asyncDemo() {
     console.log('--- 非同步開始 ---');

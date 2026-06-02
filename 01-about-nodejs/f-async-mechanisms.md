@@ -176,29 +176,29 @@ readFilesParallel();
 2. Promise 和 async/await 都需要正確處理錯誤
 3. 在 async 函式中，記得使用 try/catch 處理錯誤
 4. 注意非同步操作的執行順序
-5. 合理使用 Promise.all() 進行並行處理 
+5. 合理使用 Promise.all() 進行並行處理
 
-console.time() // 計算執行時間
-console.timeEnd() // 結束計算
-```
+## 範例輸出
+
+三種寫法讀取 `file1.txt`、`file2.txt` 的輸出大致如下
+（可用 `console.time()` / `console.timeEnd()` 量測總執行時間）：
+
+```text
 === 使用 Callback 方式 ===
 開始讀取檔案...
 讀取 file1.txt 完成
 讀取 file2.txt 完成
-讀取 file3.txt 完成
 總執行時間：xxx ms
 
 === 使用 Promise 方式 ===
 開始讀取檔案...
 讀取 file1.txt 完成
 讀取 file2.txt 完成
-讀取 file3.txt 完成
 總執行時間：xxx ms
 
 === 使用 async/await 方式 ===
 開始讀取檔案...
 讀取 file1.txt 完成
 讀取 file2.txt 完成
-讀取 file3.txt 完成
 總執行時間：xxx ms
 ```

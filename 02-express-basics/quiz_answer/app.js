@@ -50,7 +50,8 @@ app.delete('/api/messages/:id', (req, res) => {
   }
 
   messages = messages.filter((msg) => msg.id !== id)
-  res.status(204).json({ message: '成功刪除' })
+  // 204 No Content 依規範不應帶 body（Express 會忽略 body），用 send() 即可
+  res.status(204).send()
 })
 
 const port = 3000

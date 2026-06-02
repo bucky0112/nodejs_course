@@ -745,10 +745,14 @@ export function notFoundHandler(req, res) {
 
 ```javascript
 import express from 'express'
+import cors from 'cors'
 import routes from './routes/index.js'
 import { errorHandler, notFoundHandler } from './middleware/errorHandler.js'
 
 const app = express()
+
+// 跨來源資源共享（讓前端可以呼叫此 API）
+app.use(cors())
 
 // 內建中間件
 app.use(express.json())

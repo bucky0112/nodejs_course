@@ -122,7 +122,7 @@ app.post("/upload", upload.single("image"), async (req, res) => {
 
     // expiresIn: 3600 表示網址有效期為 3600 秒（1 小時）
     // 過期後需要重新產生新的 Presigned URL
-    const signedUrl = await getSignedUrl(s3, command, { expiresIn: 30 })
+    const signedUrl = await getSignedUrl(s3, command, { expiresIn: 3600 })
 
     // 回傳上傳成功訊息和可存取的網址
     res.json({

@@ -34,6 +34,11 @@ router.put("/:id", async (req, res) => {
   try {
     const { name, dangerLevel, description, killBy } = req.body
 
+    // 基本輸入驗證：name 在 schema 是 NOT NULL，先擋下來回 400 而非讓 DB 丟 500
+    if (!name) {
+      return res.status(400).json({ message: "name 為必填" })
+    }
+
     await db
       .update(monstersTable)
       .set({

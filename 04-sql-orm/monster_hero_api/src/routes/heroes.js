@@ -36,6 +36,12 @@ router.put("/:id", async (req, res) => {
   try {
     const { name, gender, age, heroLevel, heroRank, description } = req.body
 
+    // 基本輸入驗證：name 與 heroLevel 在 schema 是 NOT NULL，先擋下來回 400，
+    // 比起讓 DB 約束丟 500、給使用者更清楚的錯誤訊息
+    if (!name || !heroLevel) {
+      return res.status(400).json({ message: "name 與 heroLevel 為必填" })
+    }
+
     await db
       .update(heroesTable)
       .set({

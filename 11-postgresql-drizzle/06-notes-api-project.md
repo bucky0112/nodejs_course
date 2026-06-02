@@ -1166,6 +1166,6 @@ Response ← Controller ← Service ← Database
 - ✅ 完整的 API 實作
 
 下一步可以學習：
-- JWT 認證（07-jwt）
-- OAuth 登入（08-oauth）
+- JWT 認證（08-jwt）
+- OAuth 登入（09-oauth）
 - 檔案上傳到 S3（06-upload-to-s3）

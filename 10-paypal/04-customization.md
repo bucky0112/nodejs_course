@@ -20,10 +20,23 @@ loadScript({
 ```
 
 ## 🧠 檢查付款方式可用性
+
+`@paypal/paypal-js` 並沒有頂層的 `getFundingEligibility` 函式；要判斷某種
+付款方式是否可用，應透過 `loadScript` 載入後的 `paypal` 物件，用
+`paypal.Buttons({ fundingSource }).isEligible()` 來檢查：
+
 ```js
-import { getFundingEligibility } from '@paypal/paypal-js'
+import { loadScript } from '@paypal/paypal-js'
 
-const eligibility = await getFundingEligibility()
+const paypal = await loadScript({
+  'client-id': import.meta.env.VITE_PAYPAL_CLIENT_ID,
+  currency: 'TWD'
+})
 
-console.log(eligibility.card.eligible) // true / false
+// 檢查「信用卡」這個付款來源是否可用
+const cardEligible = paypal
+  .Buttons({ fundingSource: paypal.FUNDING.CARD })
+  .isEligible()
+
+console.log(cardEligible) // true / false
 ```

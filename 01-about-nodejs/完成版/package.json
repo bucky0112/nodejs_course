@@ -1,0 +1,16 @@
+{
+  "name": "node-basics",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "S0 Node.js 基礎：模組、非同步、內建模組、原生 HTTP 伺服器",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "modules": "node modules-main.js",
+    "sync": "node sync.js",
+    "async": "node async.js",
+    "builtins": "node builtins.js",
+    "server": "node --watch server.js"
+  }
+}

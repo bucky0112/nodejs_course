@@ -1,1 +1,0 @@
-ALTER TABLE "likes" DROP COLUMN "like";

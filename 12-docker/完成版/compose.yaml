@@ -1,0 +1,39 @@
+# 注意：新版 Compose 不再需要 version: 欄位（寫了會跳警告）。直接從 services 開始。
+name: todo-app # 固定專案名，這樣不論在哪個資料夾跑都一致
+
+services:
+  # Node.js todo API
+  app:
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      # 主機名稱是下面那個 service 的名字「db」，不是 localhost——
+      # Compose 會幫同一個網路裡的 service 自動做 DNS 解析。
+      DATABASE_URL: postgresql://todo:todo_pw@db:5432/todo_app
+    depends_on:
+      db:
+        condition: service_healthy # 等 db 真的 ready 才啟動 app
+    restart: unless-stopped
+
+  # PostgreSQL 資料庫
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: todo
+      POSTGRES_PASSWORD: todo_pw
+      POSTGRES_DB: todo_app
+    ports:
+      - '5433:5432' # 對外用 5433，避免和你本機的 PostgreSQL 撞埠
+    volumes:
+      - todo_pgdata:/var/lib/postgresql/data # 把資料存到 volume，容器刪了也不掉
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U todo -d todo_app']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  todo_pgdata:

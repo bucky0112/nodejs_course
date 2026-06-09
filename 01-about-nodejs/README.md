@@ -29,6 +29,8 @@
 
 > 不需要先會後端、資料庫或任何框架。這就是起點。
 
+> 🪟 **Windows 使用者**：課程指令以 bash 為基準，`curl`/`cp`/`psql` 等少數指令在 Windows 寫法不同。先看一眼 [Windows 指令對照](../concepts/windows-指令對照.md)，建議用 PowerShell（Windows Terminal 預設）。
+
 ---
 
 ## ③ 工作坊

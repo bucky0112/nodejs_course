@@ -78,6 +78,9 @@ M8 Railway 部署    → 上線
 - [Supabase 金鑰與連線](./concepts/supabase-金鑰與連線.md) · [Supabase RLS](./concepts/supabase-rls.md) · [Supabase Realtime](./concepts/supabase-realtime.md)
 - [部署：環境變數與正式設定](./concepts/部署-環境變數與正式設定.md) · [Docker image vs container](./concepts/docker-image-vs-container.md)
 
+**環境 / 工具**
+- [Windows 指令對照](./concepts/windows-指令對照.md)（Windows 使用者必看）
+
 ---
 
 ## 技術棧
@@ -97,6 +100,8 @@ M8 Railway 部署    → 上線
 - **PostgreSQL 16+**（M2 起需要；本機安裝或用 Docker 起一個都行）
 - 一個能打 API 的工具：VS Code REST Client、Postman，或終端機 `curl`
 - 後段章節各自需要的免費帳號：AWS（M7）、Supabase（S2）、Railway（M8）、Docker Desktop（S3）
+
+> 🪟 **Windows 使用者**：課程指令以 macOS / Linux（bash）為基準，有幾個地方（`curl`、`cp`、`psql`）在 Windows 寫法不同。開課前先看 [Windows 指令對照](./concepts/windows-指令對照.md)，遇到指令跑不動回來對一下。
 
 ## 快速開始
 

@@ -19,4 +19,6 @@ app.use((req, res, next) => {
 app.use(routes)
 
 app.use(notFound)
+// service 拋出的 HttpError 會被 Express 5 自動接住（async handler 的 rejected promise）並轉送到這裡，
+// 所以 controller 不需要自己寫 try/catch。
 app.use(errorHandler)

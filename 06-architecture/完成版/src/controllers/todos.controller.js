@@ -1,3 +1,4 @@
+// 這裡的 async controller 不寫 try/catch：Express 5 會自動把拋出的錯誤轉給 errorHandler。
 import * as todosService from '../services/todos.service.js'
 
 export async function list(req, res) {

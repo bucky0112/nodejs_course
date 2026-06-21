@@ -90,4 +90,4 @@ app.get('/users/:id', async (req, res) => {
 
 ## 延伸
 - 在 Express 5，沒被任何路由匹配到的請求，可以用一個放在最後、沒有四參數的 `app.use((req, res) => ...)` 當 404 處理（要放在錯誤處理器之前）。
-- 之後 [M5 JWT] 的驗證 middleware 會用 `next(err)` 把 401/403 丟給這裡集中處理。
+- 之後 [M6 JWT] 的驗證 middleware 會用 `next(err)` 把 401/403 丟給這裡集中處理。

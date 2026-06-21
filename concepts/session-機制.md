@@ -48,5 +48,5 @@ Session **依賴** cookie 來傳 sid。沒有「要 cookie 還是要 session」�
 ---
 
 ## 延伸
-- Session 是「有狀態」的做法（伺服器要存）。[M5] 的 JWT 是「無狀態」的另一條路（伺服器不存，資訊放 token 裡），各有取捨 → [概念卡：Session vs JWT](./session-vs-jwt.md)。
+- Session 是「有狀態」的做法（伺服器要存）。[M6] 的 JWT 是「無狀態」的另一條路（伺服器不存，資訊放 token 裡），各有取捨 → [概念卡：Session vs JWT](./session-vs-jwt.md)。
 - sid 一旦被偷（session hijacking），攻擊者就能冒用你——這也是為什麼 cookie 要設 `HttpOnly`/`Secure` → [概念卡：Cookie 的安全屬性](./cookie-安全屬性.md)。

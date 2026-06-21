@@ -47,7 +47,7 @@ const requireToken = (req, res, next) => {
 }
 ```
 
-這正是後面 [M5 JWT] 保護路由的做法。
+這正是後面 [M6 JWT] 保護路由的做法。
 
 ---
 

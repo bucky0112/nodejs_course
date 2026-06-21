@@ -52,5 +52,5 @@ Dockerfile  ──build──▶  image  ──run──▶  container（可以�
 ---
 
 ## 延伸
-- 容器化常和「部署」一起談，但兩者可以分開：本課程主線用 [M8 Railway] 部署（它自動偵測 Node，不需要你寫 Dockerfile）。Docker 是想要「環境完全可攜、可自架」時的進階選項。
+- 容器化常和「部署」一起談，但兩者可以分開：本課程主線用 [M9 Railway] 部署（它自動偵測 Node，不需要你寫 Dockerfile）。Docker 是想要「環境完全可攜、可自架」時的進階選項。
 - image 越小越好：用 `node:22-slim` 而非 `node:22`，並善用 `.dockerignore` 把 `node_modules`、`.env`、`.git` 排除在 build context 外。

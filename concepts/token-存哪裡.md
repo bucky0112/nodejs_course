@@ -43,7 +43,7 @@ fetch('/todos', { headers: { Authorization: `Bearer ${localStorage.getItem('toke
 - **行動 App / 純 API client**：沒有瀏覽器 XSS 問題，用 `Authorization: Bearer` header 帶 token 很合理（存在 App 的安全儲存區）。
 - **無論哪種**：根本還是要**消滅 XSS**（輸出編碼、CSP），因為 XSS 一旦發生，存哪裡都難全身而退。
 
-> 本課程的 M5 後端用 `Authorization: Bearer` header 示範（最通用的 API 形式）。若要接瀏覽器前端正式上線，請依上面取捨選擇存法，不要無腦丟 localStorage。
+> 本課程的 M6 後端用 `Authorization: Bearer` header 示範（最通用的 API 形式）。若要接瀏覽器前端正式上線，請依上面取捨選擇存法，不要無腦丟 localStorage。
 
 ---
 

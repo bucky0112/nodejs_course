@@ -64,4 +64,4 @@ cookie: {
 ---
 
 ## 延伸
-- 到 [M5] 改用 JWT 時，token 要存哪裡（cookie vs localStorage）又是另一組安全取捨，會再討論。
+- 到 [M6] 改用 JWT 時，token 要存哪裡（cookie vs localStorage）又是另一組安全取捨，會再討論。

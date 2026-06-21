@@ -1,12 +1,12 @@
-# M6 · OAuth：用 Google 帳號登入
+# M7 · OAuth：用 Google 帳號登入
 
-> 主線章節（spine）。接續 [M5]——加上「用 Google 登入」，讓使用者不必為你的網站另記一組帳密。
+> 主線章節（spine）。接續 [M6]——加上「用 Google 登入」，讓使用者不必為你的網站另記一組帳密。
 
 ---
 
 ## ① 這章你會做出什麼、搞懂什麼
 
-**做出**：使用者點「用 Google 登入」→ 到 Google 授權 → 導回你的網站 → 拿到你簽發的 JWT。帳密登入（M5）與 Google 登入並存。
+**做出**：使用者點「用 Google 登入」→ 到 Google 授權 → 導回你的網站 → 拿到你簽發的 JWT。帳密登入（M6）與 Google 登入並存。
 
 **搞懂**：
 - OAuth 2.0 的授權碼流程（authorization code flow）每一步在做什麼
@@ -18,7 +18,7 @@
 
 ## ② 前置檢查
 
-- [ ] 完成 [M5]（懂 JWT、`signToken`、requireAuth）。
+- [ ] 完成 [M6]（懂 JWT、`signToken`、requireAuth）。
 - [ ] 有一個 Google 帳號，能進 [Google Cloud Console](https://console.cloud.google.com/)。
 
 ### 取得 Google OAuth 憑證（圖文步驟）
@@ -88,4 +88,4 @@ npm run dev
 
 ---
 
-**下一章 → [M7 · 檔案上傳：會員頭像（S3）]**
+**下一章 → [M8 · 檔案上傳：會員頭像（S3）]**

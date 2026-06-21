@@ -75,4 +75,4 @@ npm run dev
 
 ---
 
-**下一章 → [M4 · Cookie / Session：加上會員登入]**（todo 將從「大家共用」變成「我的 todo」）
+**下一章 → [M4 · 分層架構：把單檔 app 拆成 routes / controllers / services]**（先把程式整理乾淨，後面加會員登入會輕鬆很多）

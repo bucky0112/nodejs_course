@@ -1,4 +1,4 @@
-# M8 · Railway 部署：把 todo app 送上線
+# M9 · Railway 部署：把 todo app 送上線
 
 > 主線章節（spine）· **主線終點**。把你一路建起來的 todo app 部署到 Railway，拿到一個公開網址。Railway 會自動偵測 Node 專案，**不必先學 Docker**。
 
@@ -17,7 +17,7 @@
 
 ## ② 前置檢查
 
-- [ ] 一個能部署的 todo app（[M7] 或你目前的進度）。
+- [ ] 一個能部署的 todo app（[M8] 或你目前的進度）。
 - [ ] 程式已部署就緒：`app.listen(process.env.PORT || 3000)`、`package.json` 有 `start`、`.env` 在 `.gitignore`。
 - [ ] 一個 [Railway](https://railway.app/) 帳號，專案推上 GitHub（或裝 Railway CLI）。
 

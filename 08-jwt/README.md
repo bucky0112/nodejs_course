@@ -1,6 +1,6 @@
-# M5 · JWT：把 session 換成 token 認證
+# M6 · JWT：把 session 換成 token 認證
 
-> 主線章節（spine）。接續 [M4]——把「伺服器存狀態」的 session，換成「伺服器不存狀態」的 JWT。
+> 主線章節（spine）。接續 [M5]——把「伺服器存狀態」的 session，換成「伺服器不存狀態」的 JWT。
 
 ---
 
@@ -18,7 +18,7 @@
 
 ## ② 前置檢查
 
-- [ ] 完成 [M4]（懂 session 版的登入、bcrypt、requireAuth）。
+- [ ] 完成 [M5]（懂 session 版的登入、bcrypt、requireAuth）。
 - [ ] 讀過 [概念卡：Session 機制](../concepts/session-機制.md)（才比較得出 JWT 的差異）。
 
 ---
@@ -75,4 +75,4 @@ npm run dev
 
 ---
 
-**下一章 → [M6 · OAuth：用 Google 帳號登入]**
+**下一章 → [M7 · OAuth：用 Google 帳號登入]**

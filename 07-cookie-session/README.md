@@ -1,6 +1,6 @@
-# M4 · Cookie / Session：加上會員登入
+# M5 · Cookie / Session：加上會員登入
 
-> 主線章節（spine）· **進階分水嶺**。接續 [M3]——todo 從「大家共用」變成「我的 todo」。這章引入會員、密碼雜湊與 session。
+> 主線章節（spine）· **進階分水嶺**。接續 [M4]——在乾淨的分層架構上，todo 從「大家共用」變成「我的 todo」。這章引入會員、密碼雜湊與 session。
 
 ---
 
@@ -18,7 +18,7 @@
 
 ## ② 前置檢查
 
-- [ ] 完成 [M3]（todo app 有關聯式資料模型）。
+- [ ] 完成 [M4]（todo app 已拆成 routes / controllers / services 分層；資料模型沿用 M3 的關聯式設計）。
 - [ ] 知道怎麼用 cookie jar 測 API（`curl -c/-b`，或 Postman 會自動保存 cookie）。
 
 ---
@@ -78,4 +78,4 @@ npm run dev
 
 ---
 
-**下一章 → [M5 · JWT：把 session 換成 token 認證]**
+**下一章 → [M6 · JWT：把 session 換成 token 認證]**

@@ -65,7 +65,7 @@ URL 會留在**瀏覽器歷史、Referer header、伺服器 log**裡，是不安
 
 ## 五、拿到 Google 使用者後，發「你自己的」憑證
 
-OAuth 只負責「確認這個人是誰」。確認後，你應該用**自己的** session 或 JWT 來維持登入狀態（本課程簽發自己的 JWT，延續 M5），而不是一直拿 Google 的 token 到處跑。
+OAuth 只負責「確認這個人是誰」。確認後，你應該用**自己的** session 或 JWT 來維持登入狀態（本課程簽發自己的 JWT，延續 M6），而不是一直拿 Google 的 token 到處跑。
 
 ---
 

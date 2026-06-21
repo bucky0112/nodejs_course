@@ -1,4 +1,4 @@
-# M8 完成版：Railway 部署設定
+# M9 完成版：Railway 部署設定
 
 把這個 `railway.json` 放在你的 todo app 專案根目錄，Railway 部署時就會：
 

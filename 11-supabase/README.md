@@ -6,7 +6,7 @@
 
 ## ① 這章你會做出什麼、搞懂什麼
 
-**做出**：把前面的 todo app（M2~M7）的資料庫**一行程式不改**，直接搬到 Supabase 託管的 PostgreSQL 上；再加一個「資料一變、前端即時收到」的 Realtime 監聽。
+**做出**：把前面的 todo app（M2~M8）的資料庫**一行程式不改**，直接搬到 Supabase 託管的 PostgreSQL 上；再加一個「資料一變、前端即時收到」的 Realtime 監聽。
 
 **搞懂**：
 - Supabase 本質就是託管 PostgreSQL（所以 Drizzle 程式不用改）
@@ -72,4 +72,4 @@ npm run listen
 
 ---
 
-**下一章 → [M8 · Railway 部署]**（把 todo app 送上線）
+**下一章 → [M9 · Railway 部署]**（把 todo app 送上線）

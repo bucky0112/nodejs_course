@@ -88,10 +88,10 @@ export async function deleteTodo(id, userId) {
 export async function addTagToTodo(todoId, tagId, userId) {
   const owned = await loadOwnedTodo(todoId, userId)
   if (!owned) throw new HttpError(404, '找不到這筆 todo')
-  const tag = await db.query.tags.findFirst({ where: eq(tags.id, Number(tagId)) })
+  const tag = await db.query.tags.findFirst({ where: eq(tags.id, tagId) })
   if (!tag) throw new HttpError(404, '找不到這個標籤')
-  await db.insert(todoTags).values({ todoId: owned.id, tagId: Number(tagId) }).onConflictDoNothing()
-  return { todoId: owned.id, tagId: Number(tagId) }
+  await db.insert(todoTags).values({ todoId: owned.id, tagId }).onConflictDoNothing()
+  return { todoId: owned.id, tagId }
 }
 
 export async function removeTagFromTodo(todoId, tagId, userId) {

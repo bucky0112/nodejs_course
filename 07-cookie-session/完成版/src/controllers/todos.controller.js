@@ -26,7 +26,13 @@ export async function remove(req, res) {
 export async function addTag(req, res) {
   res
     .status(201)
-    .json(await todosService.addTagToTodo(Number(req.params.id), req.body.tagId, req.session.userId))
+    .json(
+      await todosService.addTagToTodo(
+        Number(req.params.id),
+        Number(req.body.tagId),
+        req.session.userId,
+      ),
+    )
 }
 
 export async function removeTag(req, res) {

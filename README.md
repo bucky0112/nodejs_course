@@ -17,7 +17,7 @@
 每章資料夾固定有：`README.md`（總覽）、`工作坊.md`（動手步驟）、`完成版/`（可跑的里程碑成果）。
 
 **兩種章節：**
-- 🟩 **主線（spine）= M1~M8**：同一個 todo app 一路長大，後面依賴前面，**建議照順序走**。
+- 🟩 **主線（spine）= M1~M9**：同一個 todo app 一路長大，後面依賴前面，**建議照順序走**。
 - 🟦 **側模組（side module）= S0~S3**：獨立旁支，穿插在主線之間，有些是進階選讀。
 
 ---
@@ -31,15 +31,16 @@
 | 03 | [S1 · SQL 基礎](./03-sql-tutorial/) | 🟦 前置 | 手寫 SQL 建出 todo 的資料庫底子 |
 | 04 | [M2 · 接資料庫（Drizzle）](./04-sql-orm/) | 🟩 主線 | 把 todo 存進 PostgreSQL，schema/CRUD/migration |
 | 05 | [M3 · 關聯](./05-relations/) | 🟩 主線 | 加 lists（1:N）與 tags（M:N） |
-| 06 | [M4 · Cookie / Session](./06-cookie-session/) | 🟩 主線 | 加會員登入，todo 變「我的 todo」← 難度分水嶺 |
-| 07 | [M5 · JWT](./07-jwt/) | 🟩 主線 | 把 session 換成 token 認證 |
-| 08 | [M6 · OAuth](./08-oauth/) | 🟩 主線 | 用 Google 帳號登入（含 state/CSRF） |
-| 09 | [M7 · 檔案上傳（S3）](./09-upload-to-s3/) | 🟩 主線 | 會員頭像上傳到 AWS S3 |
-| 10 | [S2 · Supabase](./10-supabase/) | 🟦 進階旁支 | 換成雲端 PostgreSQL + Realtime / RLS |
-| 11 | [M8 · Railway 部署](./11-railway-deploy/) | 🟩 主線終點 | 把 todo app 真正送上線 |
-| 12 | [S3 · Docker 容器化](./12-docker/) | 🟦 進階可選 | 用 Dockerfile / Compose 讓環境完全可攜 |
+| 06 | [M4 · 分層架構](./06-architecture/) | 🟩 主線 | 把 app.js 拆成 routes/controllers/services 三層 |
+| 07 | [M5 · Cookie / Session](./07-cookie-session/) | 🟩 主線 | 加會員登入，todo 變「我的 todo」← 難度分水嶺 |
+| 08 | [M6 · JWT](./08-jwt/) | 🟩 主線 | 把 session 換成 token 認證 |
+| 09 | [M7 · OAuth](./09-oauth/) | 🟩 主線 | 用 Google 帳號登入（含 state/CSRF） |
+| 10 | [M8 · 檔案上傳（S3）](./10-upload-to-s3/) | 🟩 主線 | 會員頭像上傳到 AWS S3 |
+| 11 | [S2 · Supabase](./11-supabase/) | 🟦 進階旁支 | 換成雲端 PostgreSQL + Realtime / RLS |
+| 12 | [M9 · Railway 部署](./12-railway-deploy/) | 🟩 主線終點 | 把 todo app 真正送上線 |
+| 13 | [S3 · Docker 容器化](./13-docker/) | 🟦 進階可選 | 用 Dockerfile / Compose 讓環境完全可攜 |
 
-> **最短完課路徑**：照 M1→M8 主線走（中間的 S0/S1 是地基、會用到），到 **M8 Railway 部署**就有一個上線的 app。S2 Supabase 與 S3 Docker 是進階旁支，行有餘力再看。
+> **最短完課路徑**：照 M1→M9 主線走（中間的 S0/S1 是地基、會用到），到 **M9 Railway 部署**就有一個上線的 app。S2 Supabase 與 S3 Docker 是進階旁支，行有餘力再看。
 
 ### todo app 的成長弧
 
@@ -47,11 +48,12 @@
 M1 Express 骨架    → 記憶體 todo CRUD（先會動，連 DB 都還沒）
 M2 接 Drizzle      → todo 存進 PostgreSQL
 M3 關聯            → 加 lists(1:N) 與 tags(M:N)
-M4 Cookie/Session  → 加會員登入，todo 變「我的 todo」  ← 難度分水嶺
-M5 JWT             → 換 token 認證
-M6 OAuth           → Google 登入
-M7 S3 上傳         → 會員頭像（此時 user/auth 已齊）
-M8 Railway 部署    → 上線
+M4 分層架構        → 把 app.js 拆成 routes/controllers/services（同一支 app，先整理再長大）
+M5 Cookie/Session  → 加會員登入，todo 變「我的 todo」  ← 難度分水嶺
+M6 JWT             → 換 token 認證
+M7 OAuth           → Google 登入
+M8 S3 上傳         → 會員頭像（此時 user/auth 已齊）
+M9 Railway 部署    → 上線
 ```
 
 ---
@@ -63,6 +65,7 @@ M8 Railway 部署    → 上線
 **Node / Express**
 - [ESM vs CommonJS](./concepts/esm-vs-cjs.md) · [Node.js 的非同步機制](./concepts/非同步機制.md)
 - [Express Middleware](./concepts/express-middleware.md) · [HTTP 狀態碼](./concepts/http-狀態碼.md) · [Express 的錯誤處理](./concepts/express-錯誤處理.md)
+- [分層架構](./concepts/分層架構.md)
 
 **資料庫**
 - [SQL JOIN 與關聯](./concepts/sql-關聯與join.md) · [SQL 交易](./concepts/sql-交易.md)
@@ -99,7 +102,7 @@ M8 Railway 部署    → 上線
 - **Node.js 22 LTS 以上**（`node -v` 確認；建議用 [nvm](https://github.com/nvm-sh/nvm) 管理版本）
 - **PostgreSQL 16+**（M2 起需要；本機安裝或用 Docker 起一個都行）
 - 一個能打 API 的工具：VS Code REST Client、Postman，或終端機 `curl`
-- 後段章節各自需要的免費帳號：AWS（M7）、Supabase（S2）、Railway（M8）、Docker Desktop（S3）
+- 後段章節各自需要的免費帳號：AWS（M8）、Supabase（S2）、Railway（M9）、Docker Desktop（S3）
 
 > 🪟 **Windows 使用者**：課程指令以 macOS / Linux（bash）為基準，有幾個地方（`curl`、`cp`、`psql`）在 Windows 寫法不同。開課前先看 [Windows 指令對照](./concepts/windows-指令對照.md)，遇到指令跑不動回來對一下。
 

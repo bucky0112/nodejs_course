@@ -17,4 +17,4 @@ ENV NODE_ENV=production
 # 文件性質的宣告：告訴讀者這個容器會用 3000
 EXPOSE 3000
 
-CMD ["node", "app.js"]
+CMD ["node", "src/server.js"]

@@ -31,7 +31,10 @@ export async function uploadAvatar(userId, file) {
 
 // 取得頭像：產生短期 presigned URL（bucket 設為私有，不公開直連）
 export async function getAvatarUrl(userId) {
-  const user = await db.query.users.findFirst({ where: eq(users.id, userId) })
+  const user = await db.query.users.findFirst({
+    where: eq(users.id, userId),
+    columns: { avatarKey: true },
+  })
   if (!user?.avatarKey) {
     throw new HttpError(404, '還沒有上傳頭像')
   }

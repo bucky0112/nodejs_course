@@ -15,10 +15,6 @@ export function errorHandler(err, req, res, next) {
     }
     return res.status(400).json({ error: err.message })
   }
-  // fileFilter 丟出的「只接受圖片檔」等錯誤
-  if (err.message === '只接受圖片檔') {
-    return res.status(400).json({ error: err.message })
-  }
   console.error(err)
   res.status(err.status || 500).json({ error: err.message || '伺服器發生錯誤' })
 }

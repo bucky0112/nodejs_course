@@ -50,4 +50,4 @@ DELETE FROM todos WHERE id = 3;   -- ✓ 只刪這一筆
 
 ## 延伸
 - 交易有所謂 ACID 特性（原子性、一致性、隔離性、持久性），初學階段先掌握「原子性：全有或全無」就夠了。
-- 到[第 12 堂](../12-prisma-relations-integration/)用 Prisma 時，會用 `prisma.$transaction(async (tx) => { ... })` 包住多個操作，背後就是這張卡的 `BEGIN/COMMIT`。
+- 用 Prisma 時，可以用 `prisma.$transaction(async (tx) => { ... })` 把多個操作包成一個交易，背後就是這張卡的 `BEGIN/COMMIT`。[第 12 堂](../12-prisma-relations-integration/)的挑戰題會用到。

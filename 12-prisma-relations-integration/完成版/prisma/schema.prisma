@@ -1,0 +1,51 @@
+// 產生 Prisma Client 的設定：產出的程式碼放在 src/generated/prisma
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+// 資料庫種類；連線字串寫在 prisma.config.js
+datasource db {
+  provider = "postgresql"
+}
+
+// 清單：一個清單有多筆 todo（1:N 的「一」邊）
+model List {
+  id    Int    @id @default(autoincrement())
+  name  String @db.VarChar(100)
+  todos Todo[] // 關聯欄位：不會變成資料庫的欄位，只是讓 Prisma 知道可以從清單找到 todo
+
+  @@map("lists")
+}
+
+model Todo {
+  id        Int       @id @default(autoincrement())
+  title     String    @db.VarChar(200)
+  completed Boolean   @default(false)
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  // 1:N 的「多」邊：listId 是真正存在資料庫裡的外鍵欄位；list 是關聯欄位
+  listId    Int?      @map("list_id")
+  list      List?     @relation(fields: [listId], references: [id], onDelete: SetNull)
+  todoTags  TodoTag[]
+
+  @@map("todos")
+}
+
+model Tag {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique @db.VarChar(50)
+  todoTags TodoTag[]
+
+  @@map("tags")
+}
+
+// todo 與 tag 的中介表（M:N），跟第 9 堂的 todo_tags 一樣
+model TodoTag {
+  todoId Int  @map("todo_id")
+  tagId  Int  @map("tag_id")
+  todo   Todo @relation(fields: [todoId], references: [id], onDelete: Cascade)
+  tag    Tag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([todoId, tagId]) // 複合主鍵：同一組 (todo, tag) 不重複
+  @@map("todo_tags")
+}

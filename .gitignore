@@ -4,6 +4,7 @@ node_modules/
 # 環境變數（任意層級）
 .env
 .env.local
+.env.test
 
 # 日誌
 *.log
@@ -11,9 +12,3 @@ node_modules/
 # 作業系統
 .DS_Store
 
-# 上傳暫存（本地測試產物）
-uploads/
-
-# 安全沙箱章節的惡意專案範例：內含本地教學用的巢狀 .git（示範惡意
-# git hooks），刻意不納入課程 repo，由講師在本地自行準備測試目標
-12-docker/security-sandbox/malicious-demo/

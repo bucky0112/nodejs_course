@@ -8,7 +8,7 @@
 
 ## 一、`curl` 測 API：最容易中的坑 ⚠️
 
-課程很多章用 `curl` 測 API，範例長這樣（單引號包 JSON）：
+課程很多堂用 `curl` 測 API，範例長這樣（單引號包 JSON）：
 
 ```bash
 curl -X POST localhost:3000/todos -H 'Content-Type: application/json' -d '{"title":"買牛奶"}'
@@ -31,7 +31,7 @@ curl.exe -X POST localhost:3000/todos -H "Content-Type: application/json" -d "{\
 
 ## 二、多行指令的接行符號不一樣
 
-課程偶爾把長指令拆多行（部署那章有一個），bash 用行尾反斜線 `\` 接行：
+課程偶爾把長指令拆多行，bash 用行尾反斜線 `\` 接行：
 
 ```bash
 curl -X POST https://你的app.up.railway.app/auth/register \

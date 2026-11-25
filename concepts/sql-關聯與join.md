@@ -103,5 +103,5 @@ GROUP BY l.name;
 ---
 
 ## 延伸
-- 這些關聯，到 [M3] 會用 Drizzle ORM 再做一次——你會發現 Drizzle 產生的 SQL 就是這張卡教的東西。
+- 這些關聯，到[第 12 堂](../12-prisma-relations-integration/)會用 Prisma 再做一次。你會發現 Prisma 產生的 SQL 就是這張卡教的東西。→ [概念卡：Prisma 關聯查詢](./prisma-關聯查詢.md)
 - `COUNT(t.id)` 不會把 NULL 算進去，所以空清單會正確得到 0（而不是 1）。

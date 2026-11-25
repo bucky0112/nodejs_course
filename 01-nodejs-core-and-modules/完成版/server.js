@@ -1,7 +1,7 @@
 import http from 'node:http'
 
 // 先用記憶體存資料（重啟就消失）
-const todos = ['學習 Node.js', '認識 HTTP 模組', '完成 S0']
+const todos = ['學習 Node.js', '認識 HTTP 模組', '完成第 1 堂']
 
 // 用 Node 內建的 http 模組做一個最陽春的伺服器
 // 注意：路由要自己用 if/else 一個一個比對 req.url —— 很快就會很囉嗦

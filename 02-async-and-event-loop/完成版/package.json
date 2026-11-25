@@ -1,0 +1,15 @@
+{
+  "name": "async-and-event-loop",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "第 2 堂：同步與非同步、callback / Promise / async-await、事件迴圈執行順序",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "sync": "node sync.js",
+    "async": "node async.js",
+    "three-ways": "node three-ways.js",
+    "event-loop": "node event-loop.js"
+  }
+}

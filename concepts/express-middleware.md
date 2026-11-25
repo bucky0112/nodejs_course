@@ -47,7 +47,7 @@ const requireToken = (req, res, next) => {
 }
 ```
 
-這正是後面 [M6 JWT] 保護路由的做法。
+這就是「保護路由」的做法：登入驗證、權限檢查，都是在路由前面放一個會攔人的 middleware。
 
 ---
 
@@ -56,10 +56,11 @@ const requireToken = (req, res, next) => {
 1. **由上往下**：先 `app.use(A)` 再 `app.use(B)`，A 先跑。
 2. **路由本身也是 middleware**：`app.get('/todos', handler)` 的 `handler` 就是只在符合條件時才跑的 middleware。所以「解析 JSON」「記錄請求」這類要擺在路由**前面**，才會對所有路由生效。
 
-> 錯誤處理 middleware 是特例（四個參數、放最後），詳見 [概念卡：Express 的錯誤處理]。
+> 錯誤處理 middleware 是特例（四個參數、放最後），詳見[概念卡：Express 的錯誤處理](./express-錯誤處理.md)。
 
 ---
 
 ## 延伸
 - `app.use('/admin', someMiddleware)` 可以只對某個路徑前綴生效。
-- 常用第三方 middleware：`cors`（跨來源）、`morgan`（請求記錄）、`helmet`（安全標頭）。本課程到需要時才引入，先用內建的就好。
+- `app.post('/todos', validateTitle, handler)`：把 middleware 寫在路由的參數裡，就只對這個路由生效（路由層級 middleware）。
+- 常用第三方 middleware：`morgan`（請求記錄，[第 4 堂](../04-middleware/)會用到）、`cors`（跨來源）、`helmet`（安全標頭）。

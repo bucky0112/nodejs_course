@@ -1,0 +1,20 @@
+// 產生 Prisma Client 的設定：產出的程式碼放在 src/generated/prisma
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+// 資料庫種類；連線字串寫在 prisma.config.js
+datasource db {
+  provider = "postgresql"
+}
+
+// 對應第 9 堂手寫的 todos 表
+model Todo {
+  id        Int      @id @default(autoincrement())
+  title     String   @db.VarChar(200)
+  completed Boolean  @default(false)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("todos") // 資料表名稱用 todos（複數、小寫），跟第 9 堂一樣
+}

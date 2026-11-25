@@ -96,4 +96,4 @@ psql -v ON_ERROR_STOP=1 -d todo_sql -f normalization.sql
 
 ---
 
-**下一堂 → [第 11 堂 · Prisma 基礎](../11-prisma-basics/)**（用 Prisma 把 todo app 接上這個資料庫，`todos` 表的長相跟這兩堂一模一樣）
+**下一堂 → [第 11 堂 · Prisma 入門](../11-prisma-basics/)**（用 Prisma 把 todo app 接上 PostgreSQL，`todos` 表的長相跟這兩堂一模一樣）

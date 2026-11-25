@@ -47,4 +47,4 @@
 
 ## 延伸
 - `201 Created` 慣例上會在回應的 `Location` header 附上新資源的網址。
-- `401 Unauthorized`（沒登入/沒帶憑證）和 `403 Forbidden`（有登入但沒權限）不一樣，到 [M6 JWT]、[M7 OAuth] 會用到。
+- `401 Unauthorized`（沒登入/沒帶憑證）和 `403 Forbidden`（有登入但沒權限）不一樣，做會員登入時會用到。

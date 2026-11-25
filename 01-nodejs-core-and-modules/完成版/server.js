@@ -5,7 +5,7 @@ const todos = ['學習 Node.js', '認識 HTTP 模組', '完成第 1 堂']
 
 // 用 Node 內建的 http 模組做一個最陽春的伺服器
 // 注意：路由要自己用 if/else 一個一個比對 req.url —— 很快就會很囉嗦
-// 這正是下一章要換成 Express 的理由
+// 這正是第 3 堂要換成 Express 的理由
 const server = http.createServer((req, res) => {
   res.setHeader('Content-Type', 'application/json')
 

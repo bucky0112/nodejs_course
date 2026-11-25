@@ -1,0 +1,5 @@
+node_modules/
+.env
+
+# prisma generate 產生的程式碼，每個人自己產生，不進版控
+src/generated/

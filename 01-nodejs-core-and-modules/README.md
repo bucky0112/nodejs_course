@@ -83,7 +83,7 @@ npm run server     # 原生 http todo 伺服器
 ### 挑戰（可選，加深理解）
 
 1. **加一個路由**：在 `server.js` 加 `GET /todos/first`，回傳第一筆 todo。寫完你會發現：每加一條路由就要多一個 `else if`，這就是之後要用 Express 的原因。
-2. **動態載入**：跑 `node modules-main.js --extra`，觀察 `await import()` 何時才載入模組。
+2. **動態載入**：分別跑 `node modules-main.js` 和 `node modules-main.js --report`，比較有沒有印出 `[report.js] 模組載入了`，觀察 `await import()` 讓模組「用得到才載入」。
 3. **裝個玩具套件**：照 [cowsay](https://github.com/piuccio/cowsay) 的文件，`npm install cowsay` 後讓終端機的牛講話。
 
 ---
